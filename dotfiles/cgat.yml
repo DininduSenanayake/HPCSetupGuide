@@ -1,0 +1,7 @@
+tmpdir: /tmp
+share_tmpdir: /tmp
+
+cluster:
+     queue_manager: sge
+     queue: short.qc@@short.hga,short.qc@@short.hge
+     parallel_environment: shmem

@@ -1,0 +1,16 @@
+# Set the R package location
+# (make sure to edit to your own $USER name!)
+.libPaths(c("/well/sansom/users/odq545/devel/R/4.1/skylake/"))
+
+# Set a local mirror for packages
+options(repos=structure(c(CRAN="https://www.stats.bris.ac.uk/R/")))
+
+# Set cairo as the default bitmap type
+options(bitmapType='cairo')
+
+# Enable vscode hooks
+if (interactive() && Sys.getenv("RSTUDIO") == "") {
+source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
+}
+
+# End line to ensure that the last command as a new line (else it is not executed!)
