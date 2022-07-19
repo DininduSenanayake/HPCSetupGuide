@@ -1,3 +1,7 @@
+
+Help
+====
+
 Sources of information
 ----------------------
 
@@ -8,7 +12,7 @@ Sources of information
 Getting help
 ------------
 
-In the first instance please contact the Kennedy Institute's dedicated Systems Administrator, Konstantin borisenko. He is avaliable on Teams or email (konstantin.borisenko@kennedy.ox.ac.uk).
+In the first instance please contact the Kennedy Institute's dedicated Systems Administrator, Konstantin Borisenko. He is avaliable on Teams or email (konstantin.borisenko@kennedy.ox.ac.uk).
 
 The BRMC help team is also avaliable to help with any issues that might come up, they can be emailed at bmrc-help@medsci.ox.ac.uk.
 
