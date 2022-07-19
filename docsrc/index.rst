@@ -1,4 +1,4 @@
-BMRC survival guide
+BMRC Survival Guide
 ===================
 
 .. toctree::
