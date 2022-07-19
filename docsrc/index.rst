@@ -6,7 +6,6 @@ BMRC survival guide
 
    introduction.rst
    network.rst
-   ssh.rst
    bash.rst
    python.rst
    R.rst

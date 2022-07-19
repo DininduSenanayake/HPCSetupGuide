@@ -1,6 +1,17 @@
 Setting up your BASH environment
 ================================
 
+
+Removing the login message
+--------------------------
+
+Please read the log in messages carefully. Once you have done so, you may not wish to encounter them every time you log in. If so, all you need to do is to touch an empty ".hushlogin" file in you home directory:
+
+.. code-block:: Bash
+
+    touch ~/.hushlogin
+
+
 Configuration
 -------------
 
@@ -35,4 +46,25 @@ An configuration file for tmux that enables mouse support is in dotfiles/tmux:
 
 .. literalinclude:: ../dotfiles/tmux
     :language: Bash
+
+
+Staying under quota in your home directory
+------------------------------------------
+
+By default your home directory has a quota of 10GB. To check the disk usage in your home directory do the following:
+
+.. code-block:: Bash
+
+    cd
+    du -hs
+
+It is likely that you will hit the 10GB quota if you use e.g. rstudio, jupyter, bioconductor or other programs that save files into users home folders by default. To avoid this happening, move the problematic folders (typically including ".local", ".cache" and ".jupyter") to a location in your folder in the group's space (/well/sansom/users/$USER/) and then symlink to them from your home folder. The paths should then look like this from your home folder (where $USER is your user name):
+
+.. code-block:: Bash
+
+    .cache -> /well/sansom/users/$USER/.cache
+    .local -> /well/sansom/users/$USER/.local
+    .jupyter -> /well/sansom/users/$USER/.jupyter
+    
+    
 
