@@ -1,4 +1,4 @@
-# bmrc
+# BMRC SOP
 
 Configuration files and documentation for the group's use of the University of Oxford's BMRC cluster.
 
