@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Setting up your BASH environment &#8212; BMRC Survival Guide 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Working with Python" href="python.html" />
+    <link rel="prev" title="Connecting to the Cluster" href="network.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="setting-up-your-bash-environment">
+<h1>Setting up your BASH environment<a class="headerlink" href="#setting-up-your-bash-environment" title="Permalink to this heading">¶</a></h1>
+<section id="removing-the-login-message">
+<h2>Removing the login message<a class="headerlink" href="#removing-the-login-message" title="Permalink to this heading">¶</a></h2>
+<p>Please read the log in messages carefully. Once you have done so, you may not wish to encounter them every time you log in. If so, all you need to do is to touch an empty “.hushlogin” file in you home directory:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>touch ~/.hushlogin
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+<p>A minimal “.bashrc” file profile is provided in dotfiles/bashrc:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source global definitions</span>
+<span class="k">if</span> <span class="o">[</span> -f /etc/bashrc <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    . /etc/bashrc
+<span class="k">fi</span>
+
+<span class="c1"># Uncomment the following line if you don&#39;t like systemctl&#39;s auto-paging feature:</span>
+<span class="c1"># export SYSTEMD_PAGER=</span>
+
+<span class="c1"># Detect if we have an interactive shell</span>
+<span class="k">if</span> <span class="o">[[</span> -n <span class="s2">&quot;</span><span class="nv">$PS1</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="c1"># &lt;-------------- Interactive section -----------------------&gt; #</span>
+
+    <span class="c1"># load the group&#39;s modules</span>
+    <span class="k">if</span> <span class="nb">hash</span> module <span class="m">2</span>&gt; /dev/null <span class="p">;</span> <span class="k">then</span>
+	    <span class="nb">source</span> /well/sansom/shared/modules/core.sh
+	    <span class="nb">source</span> /well/sansom/shared/modules/single-cell.sh
+	    <span class="nb">source</span> /well/sansom/shared/modules/ngs.sh
+    <span class="k">fi</span>
+	 
+    <span class="c1"># User specific aliases and functions, e.g.</span>
+    <span class="nb">alias</span> <span class="nv">t</span><span class="o">=</span><span class="s1">&#39;tmux attach || tmux&#39;</span>
+    <span class="nb">alias</span> <span class="nv">s</span><span class="o">=</span><span class="s2">&quot;sqlite3 -header csvdb&quot;</span>
+    <span class="nb">alias</span> <span class="nv">qw</span><span class="o">=</span><span class="s2">&quot;watch qstat -u </span><span class="nv">$USER</span><span class="s2">&quot;</span> 
+    <span class="nb">alias</span> <span class="nv">whois</span><span class="o">=</span><span class="s2">&quot;ls /well/sansom/users/ | xargs getent passwd&quot;</span>
+    
+    <span class="c1">## example of a function definition to source a python venv</span>
+    <span class="c1"># venv() {</span>
+    <span class="c1">#   source ~/devel/venvs/python-3.8.2-GCCcore-9.3.0-skylake/bin/activate</span>
+    <span class="c1">#   }</span>
+    
+    <span class="c1">## SLURM configuration</span>
+    <span class="nb">export</span> <span class="nv">SLURM_CONF</span><span class="o">=</span>/run/slurm/conf/slurm.conf
+    <span class="nb">export</span> <span class="nv">DRMAA_LIBRARY_PATH</span><span class="o">=</span>/usr/lib64/libdrmaa.so 
+
+    <span class="c1">## Alternative set up for UGE (comment out the two lines above)</span>
+    <span class="c1"># export DRMAA_LIBRARY_PATH=/mgmt/uge/8.6.8/lib/lx-amd64/libdrmaa.so.1.0</span>
+
+    <span class="c1">## Allow seperate processes to perform concurrent reads from hdf5 files.</span>
+    <span class="nb">export</span> <span class="nv">HDF5_USE_FILE_LOCKING</span><span class="o">=</span>FALSE
+
+<span class="k">fi</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is essential to understand that cluster jobs submitted by CGAT pipelines inherit the bash environment of the main pipeline process. In this scenario, we want bash to initialise without manipulating the environment. To avoid execution of user configuration in this situation, we therefore test whether the “PS1” variable is set in our .bashrc file to determine if the shell is interactive or not. The “PS1” variable is set in interactive shells, but not in non-interactive shells. When you login via ssh, you obtain an interactive shell, the “PS1” variable will be set and configuration code within the if statement will be executed. Pipeline jobs run on execution nodes in non-interactive shells, where “PS1” is not set so the configuration code within the if statement is not executed.</p>
+</div>
+</section>
+<section id="software-modules">
+<h2>Software modules<a class="headerlink" href="#software-modules" title="Permalink to this heading">¶</a></h2>
+<p>In order for different programs to be able to function together in the same bash environment, generally speaking, they need be compiled with a common toolchain and linked against common libraries.</p>
+<p>The Kennedy is currently using the <strong>“gompi/foss-2020a”</strong> and <strong>“GCC/GCCcore-9.3.0”</strong> toolchains which are compatible with each other (the GCC tool chain is effectively a subset of the full toolchain). All the software that you use (both in the shell and elsewere, e.g. Rstudio) should be built with these toolchains or it is very likely that you will encounter errors.</p>
+<p>In the group, we load the modules we need via our “.bashrc” in interactive shells as shown above. This is done by sourcing scripts that load sets of related modules. The scripts defining our curated sets of modules are located on the cluster in our “~/shared/modules” folder and are version controlled in this repository. Please submit pull requests to this repo for any changes/updates needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important that the ~/shared/module/core.sh file is sourced first when loading module sets. It begins by purging the module space to make sure there will be no conflicts and enables use of Kennedy modules built with the current toolchain.</p>
+</div>
+</section>
+<section id="using-tmux">
+<h2>Using tmux<a class="headerlink" href="#using-tmux" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> is an advanced terminal multiplexer. You can use it to keep bash shells open even when you are not logged in. This is very useful for protecting against interruptions to your connection to the cluster. It is recommended to always execute longer running tasks, such as pipelines, from within a tmux session.</p>
+<p>An configuration file for tmux that enables mouse support is in dotfiles/tmux:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> -g mouse on
+</pre></div>
+</div>
+</section>
+<section id="staying-under-quota-in-your-home-directory">
+<h2>Staying under quota in your home directory<a class="headerlink" href="#staying-under-quota-in-your-home-directory" title="Permalink to this heading">¶</a></h2>
+<p>By default your home directory has a quota of 10GB. To check the disk usage in your home directory do the following:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span>
+du -hs
+</pre></div>
+</div>
+<p>It is likely that you will hit the 10GB quota if you use e.g. rstudio, jupyter, bioconductor or other programs that save files into users home folders by default. To avoid this happening, move the problematic folders (typically including “.local”, “.cache” and “.jupyter”) to a location in your folder in the group’s space (/well/sansom/users/$USER/) and then symlink to them from your home folder. The paths should then look like this from your home folder (where $USER is your user name):</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>.cache -&gt; /well/sansom/users/<span class="nv">$USER</span>/.cache
+.local -&gt; /well/sansom/users/<span class="nv">$USER</span>/.local
+.jupyter -&gt; /well/sansom/users/<span class="nv">$USER</span>/.jupyter
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">BMRC Survival Guide</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Connecting to the Cluster</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up your BASH environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#removing-the-login-message">Removing the login message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-modules">Software modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-tmux">Using tmux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#staying-under-quota-in-your-home-directory">Staying under quota in your home directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Working with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="R.html">Working with R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cgat.html">Running CGAT pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Working with Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="network.html" title="previous chapter">Connecting to the Cluster</a></li>
+      <li>Next: <a href="python.html" title="next chapter">Working with Python</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sansom Lab.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/bash.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

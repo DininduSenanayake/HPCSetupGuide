@@ -27,9 +27,13 @@ if [[ -n "$PS1" ]]; then
     # venv() {
     #   source ~/devel/venvs/python-3.8.2-GCCcore-9.3.0-skylake/bin/activate
     #   }
+    
+    ## SLURM configuration
+    export SLURM_CONF=/run/slurm/conf/slurm.conf
+    export DRMAA_LIBRARY_PATH=/usr/lib64/libdrmaa.so 
 
-    ## Export the DRMAA library path
-    export DRMAA_LIBRARY_PATH=/mgmt/uge/8.6.8/lib/lx-amd64/libdrmaa.so.1.0
+    ## Alternative set up for UGE (comment out the two lines above)
+    # export DRMAA_LIBRARY_PATH=/mgmt/uge/8.6.8/lib/lx-amd64/libdrmaa.so.1.0
 
     ## Allow seperate processes to perform concurrent reads from hdf5 files.
     export HDF5_USE_FILE_LOCKING=FALSE
