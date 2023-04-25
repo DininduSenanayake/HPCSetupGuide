@@ -1,5 +1,5 @@
-BMRC Survival Guide
-===================
+BMRC Setup Guide
+================
 
 .. toctree::
    :maxdepth: 2
