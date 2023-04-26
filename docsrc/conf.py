@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'BMRC Survival Guide'
+project = 'BMRC Setup Guide'
 copyright = '2022, Sansom Lab'
 author = 'Sansom Lab'
 
