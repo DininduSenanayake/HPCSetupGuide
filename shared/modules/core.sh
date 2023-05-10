@@ -103,7 +103,10 @@ module load zlib/1.2.11-GCCcore-9.3.0
 # git
 module load git/2.23.0-GCCcore-9.3.0-nodocs
 # texlive
-module load texlive/20220321-foss-2020a
+# this is problematic for compile pipeline reports
+# but required for building sphinx documentation
+# for now, it can be loaded manually as needed
+# module load texlive/20220321-foss-2020a
 
 # We see to be missing * compatible * replacements for the following
 
@@ -111,4 +114,7 @@ module load texlive/20220321-foss-2020a
 # bio/igraph/0.7.1              
 # apps/texinfo/6.5
 
+
+# Unload unwanted modules
+module unload SciPy-bundle
 
