@@ -16,9 +16,6 @@ if [[ -n "$PS1" ]]; then
 	    source /well/sansom/shared/modules/single-cell.sh
 	    source /well/sansom/shared/modules/ngs.sh
 	    
-	    # Remove the scipy bundle from the python path!
-	    export PYTHONPATH=$(echo ${PYTHONPATH} | awk -v RS=: -v ORS=: '/SciPy/ {next} {print}' | sed 's/:*$//')
-	    
     fi
 	 
     # User specific aliases and functions, e.g.
