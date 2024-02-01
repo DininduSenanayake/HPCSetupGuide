@@ -1,7 +1,7 @@
-# BMRC Setup Guide
+# Sansom lab HPC Setup Guide
 
-Configuration files and documentation for the group's use of the University of Oxford's BMRC cluster.
+This repository contains configuration files and documentation for the group's use of the University of Oxford's BMRC cluster. 
 
-If you find problems with the docs please raise an issue.
+Researchers in other groups using the Kennedy's Data Science Platform can also follow this guide if they wish to run e.g. the `cellhub <https://cellhub.readthedocs.io/>`_ or txseq pipelines.
 
-To add docs, please raise a pull request.
+Please note that this guide is not a replacement for the `official documentation <https://www.medsci.ox.ac.uk/for-staff/resources/bmrc/r-and-rstudio-on-the-bmrc-cluster>`_.

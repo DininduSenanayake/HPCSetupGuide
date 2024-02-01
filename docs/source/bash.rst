@@ -2,16 +2,6 @@ Setting up your BASH environment
 ================================
 
 
-Removing the login message
---------------------------
-
-Please read the log in messages carefully. Once you have done so, you may not wish to encounter them every time you log in. If so, all you need to do is to touch an empty ".hushlogin" file in you home directory:
-
-.. code-block:: Bash
-
-    touch ~/.hushlogin
-
-
 Configuration
 -------------
 
@@ -67,4 +57,17 @@ It is likely that you will hit the 10GB quota if you use e.g. rstudio, jupyter, 
     .jupyter -> /well/sansom/users/$USER/.jupyter
     
     
+Log in messages
+---------------
 
+Please read the log in messages carefully. Once you have done so, if you do not wish to encounter them on every log in, touch a ".hushlogin" file in you home directory:
+
+.. code-block:: Bash
+
+    touch ~/.hushlogin
+
+To reinstate the messages, simply delete this file:
+
+.. code-block:: Bash
+
+    rm ~/.hushlogin

@@ -16,6 +16,6 @@ If, for some reason you need to work from ivybridge, rescomp3 is a hidden ivybri
 Who is who?
 -----------
 
-To map the random user names assigned by the BMRC team to real people the following command can be used: ::
+To map user names to real people, the following command can be used: ::
 
     ls /well/sansom/users/ | xargs getent passwd | cut -f1,5 -d: | sed 's/:/ -> /g'

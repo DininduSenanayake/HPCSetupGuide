@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'BMRC Setup Guide'
+project = 'HPC Setup Guide'
 copyright = '2022, Sansom Lab'
 author = 'Sansom Lab'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.2'
 
 
 # -- General configuration ---------------------------------------------------
