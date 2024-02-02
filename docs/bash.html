@@ -85,6 +85,50 @@
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h2>
 <p>A minimal “.bashrc” file profile is provided in dotfiles/bashrc:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source global definitions</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
+
+<span class="c1"># Uncomment the following line if you don&#39;t like systemctl&#39;s auto-paging feature:</span>
+<span class="c1"># export SYSTEMD_PAGER=</span>
+
+<span class="c1"># Detect if we have an interactive shell</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PS1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="c1"># &lt;-------------- Interactive section -----------------------&gt; #</span>
+
+<span class="w">    </span><span class="c1"># load the group&#39;s modules</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">hash</span><span class="w"> </span>module<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/core.sh
+<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/single-cell.sh
+<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/ngs.sh
+<span class="w">	    </span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="w">	 </span>
+<span class="w">    </span><span class="c1"># User specific aliases and functions, e.g.</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">t</span><span class="o">=</span><span class="s1">&#39;tmux attach || tmux&#39;</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">s</span><span class="o">=</span><span class="s2">&quot;sqlite3 -header csvdb&quot;</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">qw</span><span class="o">=</span><span class="s2">&quot;watch qstat -u </span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">whois</span><span class="o">=</span><span class="s2">&quot;ls /well/sansom/users/ | xargs getent passwd&quot;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">## example of a function definition to source a python venv</span>
+<span class="w">    </span><span class="c1"># venv() {</span>
+<span class="w">    </span><span class="c1">#   source ~/devel/venvs/python-3.8.2-GCCcore-9.3.0-skylake/bin/activate</span>
+<span class="w">    </span><span class="c1">#   }</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">## SLURM configuration</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">SLURM_CONF</span><span class="o">=</span>/run/slurm/conf/slurm.conf
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">DRMAA_LIBRARY_PATH</span><span class="o">=</span>/usr/lib64/libdrmaa.so<span class="w"> </span>
+
+<span class="w">    </span><span class="c1">## Alternative set up for UGE (comment out the two lines above)</span>
+<span class="w">    </span><span class="c1"># export DRMAA_LIBRARY_PATH=/mgmt/uge/8.6.8/lib/lx-amd64/libdrmaa.so.1.0</span>
+
+<span class="w">    </span><span class="c1">## Allow seperate processes to perform concurrent reads from hdf5 files.</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">HDF5_USE_FILE_LOCKING</span><span class="o">=</span>FALSE
+
+<span class="k">fi</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is essential to understand that cluster jobs submitted by CGAT pipelines inherit the bash environment of the main pipeline process. In this scenario, we want bash to initialise without manipulating the environment. To avoid execution of user configuration in this situation, we therefore test whether the “PS1” variable is set in our .bashrc file to determine if the shell is interactive or not. The “PS1” variable is set in interactive shells, but not in non-interactive shells. When you login via ssh, you obtain an interactive shell, the “PS1” variable will be set and configuration code within the if statement will be executed. Pipeline jobs run on execution nodes in non-interactive shells, where “PS1” is not set so the configuration code within the if statement is not executed.</p>
@@ -104,6 +148,9 @@
 <h2>Using tmux<a class="headerlink" href="#using-tmux" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> is an advanced terminal multiplexer. You can use it to keep bash shells open even when you are not logged in. This is very useful for protecting against interruptions to your connection to the cluster. It is recommended to always execute longer running tasks, such as pipelines, from within a tmux session.</p>
 <p>An configuration file for tmux that enables mouse support is in dotfiles/tmux:</p>
+<div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>mouse<span class="w"> </span>on
+</pre></div>
+</div>
 </section>
 <section id="staying-under-quota-in-your-home-directory">
 <h2>Staying under quota in your home directory<a class="headerlink" href="#staying-under-quota-in-your-home-directory" title="Permalink to this heading"></a></h2>

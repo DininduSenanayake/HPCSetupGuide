@@ -13,7 +13,7 @@ R configuration
 
 A minimal .Rprofile file is provided in dotfiles/Rprofile:
 
-    .. literalinclude:: ../dotfiles/Rprofile
+    .. literalinclude:: ../../dotfiles/Rprofile
         :language: rconsole
 
 .. note:: 

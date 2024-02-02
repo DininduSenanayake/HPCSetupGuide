@@ -7,7 +7,7 @@ Configuration
 
 A minimal ".bashrc" file profile is provided in dotfiles/bashrc:
 
-.. literalinclude:: ../dotfiles/bashrc
+.. literalinclude:: ../../dotfiles/bashrc
     :language: Bash
     
 .. note::
@@ -34,7 +34,7 @@ Using tmux
 
 An configuration file for tmux that enables mouse support is in dotfiles/tmux:
 
-.. literalinclude:: ../dotfiles/tmux
+.. literalinclude:: ../../dotfiles/tmux
     :language: Bash
 
 

@@ -94,7 +94,16 @@
 <p>The configuration of <a class="reference external" href="https://github.com/cgat-developers/cgat-core">cgat-core</a> pipelines can be customised via a “.cgat.yml” file in your home directory.</p>
 <p>The recommended settings for the BMRC are provided in dotfile/cgat.yml:</p>
 <blockquote>
-<div></div></blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tmpdir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+<span class="nt">share_tmpdir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
+
+<span class="nt">cluster</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">queue_manager</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm</span>
+<span class="w">    </span><span class="nt">queue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">short</span>
+<span class="w">    </span><span class="nt">options</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;--constraint=skl-compat&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p>With the queue specified here, jobs will be submitted to all the “skylake” nodes by default (i.e. without needing to set the –cluster-queue argument).</p>
 </section>
 <section id="installing-pipelines">

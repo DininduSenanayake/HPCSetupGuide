@@ -8,7 +8,7 @@ The configuration of `cgat-core <https://github.com/cgat-developers/cgat-core>`_
 
 The recommended settings for the BMRC are provided in dotfile/cgat.yml:
 
-    .. literalinclude:: ../dotfiles/cgat.yml
+    .. literalinclude:: ../../dotfiles/cgat.yml
         :language: yaml
     
 With the queue specified here, jobs will be submitted to all the "skylake" nodes by default (i.e. without needing to set the --cluster-queue argument).

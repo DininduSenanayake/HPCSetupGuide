@@ -1,6 +1,16 @@
 Introduction
 ============
 
+This guide documents the group's use of the University of Oxford's BMRC cluster.
+
+Researchers in other groups using the Kennedy's Data Science Platform can also follow this guide if they wish to run e.g. the `c
+ellhub <https://cellhub.readthedocs.io/>`_ or txseq pipelines.
+
+Please note that this guide is not a replacement for the `official BMRC documentation<https://www.medsci.ox.ac.uk/for-staff/res\
+ources/bmrc/r-and-rstudio-on-the-bmrc-cluster>`_.
+
+
+
 Node CPU architecture
 ---------------------
 

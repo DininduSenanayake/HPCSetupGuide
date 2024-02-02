@@ -92,7 +92,31 @@
 <h2>Client ssh configuration<a class="headerlink" href="#client-ssh-configuration" title="Permalink to this heading"></a></h2>
 <p>An example of a client-side .ssh/config is provided in client-side/ssh/config:</p>
 <blockquote>
-<div></div></blockquote>
+<div><div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>*
+<span class="w">     </span>UseKeychain<span class="w"> </span>yes
+<span class="w">     </span>AddKeysToAgent<span class="w"> </span>yes
+<span class="w">     </span>ServerAliveInterval<span class="w"> </span><span class="m">120</span>
+
+Host<span class="w"> </span>bmrc1
+<span class="w">     </span>hostname<span class="w"> </span>cluster1.bmrc.ox.ac.uk
+<span class="w">     </span>user<span class="w"> </span>odq545
+<span class="w">     </span>ForwardAgent<span class="w"> </span>yes
+<span class="w">     </span>ForwardX11Trusted<span class="w"> </span>yes
+<span class="w">     </span>ControlMaster<span class="w"> </span>auto
+<span class="w">     </span>ControlPath<span class="w"> </span>~/.ssh/sockets/ssh-socket-%r-%h-%p
+<span class="w">     </span>ControlPersist<span class="w"> </span>24h
+
+Host<span class="w"> </span>bmrc2
+<span class="w">     </span>hostname<span class="w"> </span>cluster2.bmrc.ox.ac.uk
+<span class="w">     </span>user<span class="w"> </span>odq545
+<span class="w">     </span>ForwardAgent<span class="w"> </span>yes
+<span class="w">     </span>ForwardX11Trusted<span class="w"> </span>yes
+<span class="w">     </span>ControlMaster<span class="w"> </span>auto
+<span class="w">     </span>ControlPath<span class="w"> </span>~/.ssh/sockets/ssh-socket-%r-%h-%p
+<span class="w">     </span>ControlPersist<span class="w"> </span>24h
+</pre></div>
+</div>
+</div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You will need to create the “.ssh/sockets” directory if it does not exist:</p>

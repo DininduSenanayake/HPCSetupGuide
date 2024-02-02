@@ -16,7 +16,7 @@ Client ssh configuration
 
 An example of a client-side .ssh/config is provided in client-side/ssh/config:
 
-    .. literalinclude:: ../client-side/ssh/config
+    .. literalinclude:: ../../client-side/ssh/config
         :language: Bash
 
 .. note:: You will need to create the ".ssh/sockets" directory if it does not exist:
