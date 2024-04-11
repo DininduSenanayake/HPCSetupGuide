@@ -5,3 +5,5 @@ This repository contains configuration files and documentation for the group's u
 Researchers in other groups using the Kennedy's Data Science Platform can also follow this guide if they wish to run e.g. the [cellhub](https://cellhub.readthedocs.io/) or txseq pipelines.
 
 Please note that this guide is not a replacement for the [official BMRC documentation](https://www.medsci.ox.ac.uk/for-staff/resources/bmrc/r-and-rstudio-on-the-bmrc-cluster).
+
+The documentation is published online [here](https://sansomlab.github.io/HPCSetupGuide/introduction.html#).
