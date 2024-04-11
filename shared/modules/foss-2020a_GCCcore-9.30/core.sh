@@ -77,6 +77,10 @@ module load OpenSSL/1.1.1e-GCCcore-9.3.0
 module load Boost/1.72.0-gompi-2020a
 # apps/bzip2/1.0.6
 module load bzip2/1.0.8-GCCcore-9.3.0
+# Cmake (needed for compilation of some R packages)
+module load CMake/3.16.4-GCCcore-9.3.0
+# CPLEX (needed for COMPASS)
+module load CPLEX/22.1.1-GCCcore-9.3.0-Python-3.8.2
 # apps/curl/7.60.0              
 module load cURL/7.69.1-GCCcore-9.3.0
 # apps/gcc/9.1.0 -> 9.3.0 will be loaded as a dependency of e.g. Python/R

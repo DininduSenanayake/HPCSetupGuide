@@ -3,5 +3,4 @@
 #   MODULEPATH environment variable should be set appropriately
 
 # CellRanger
-module load CellRanger/7.0.0
-
+module load CellRanger/7.1.0

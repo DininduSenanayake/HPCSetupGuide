@@ -42,4 +42,14 @@
 # bio/trimgalore/0.4.5     
 # bio/trimmomatic/0.35     
 
+module load BEDTools/2.29.2-GCC-9.3.0
+module load FastQC
+module load HISAT2/2.2.1-foss-2020a
+module load Kent_tools/422-foss-2020a
+module load SAMtools/1.10-GCC-9.3.0
+module load Salmon/1.9.0-gompi-2020a
+module load Subread/2.0.1-GCC-9.3.0
+module load cutadapt/2.10-GCCcore-9.3.0-Python-3.8.2
+module load kallisto/0.46.2-foss-2020a
+module load picard/2.25.1-Java-11 &> /dev/null
 
