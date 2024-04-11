@@ -20,12 +20,12 @@ Software modules
 
 In order for different programs to be able to function together in the same bash environment, generally speaking, they need be compiled with a common toolchain and linked against common libraries.
 
-The Kennedy is currently using the **"gompi/foss-2020a"** and **"GCC/GCCcore-9.3.0"** toolchains which are compatible with each other (the GCC tool chain is effectively a subset of the full toolchain). All the software that you use (both in the shell and elsewere, e.g. Rstudio) should be built with these toolchains or it is very likely that you will encounter errors. 
+The Kennedy is currently using the **"gompi/foss-2022b"** and **"GCC/GCCcore-12.2.0"** toolchains which are compatible with each other (the GCC tool chain is effectively a subset of the full toolchain). All the software that you use (both in the shell and elsewere, e.g. Rstudio) should be built with these toolchains or it is very likely that you will encounter errors. 
 
 In the group, we load the modules we need via our ".bashrc" in interactive shells as shown above. This is done by sourcing scripts that load sets of related modules. The scripts defining our curated sets of modules are located on the cluster in our "~/shared/modules" folder and are version controlled in this repository. Please submit pull requests to this repo for any changes/updates needed.  
 
 .. note::
-    It is important that the ~/shared/module/core.sh file is sourced first when loading module sets. It begins by purging the module space to make sure there will be no conflicts and enables use of Kennedy modules built with the current toolchain.
+    It is important that the ~/shared/module/v2/module.sh file is sourced first when loading module sets. It begins by purging the module space to make sure there will be no conflicts and enables use of Kennedy modules built with the current toolchain.
 
 Using tmux
 ----------

@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introduction &mdash; HPC Setup Guide 0.2 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=10f1778b"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> HPC Setup Guide
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            HPC Setup Guide
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -66,8 +72,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Introduction</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -78,19 +84,19 @@
            <div itemprop="articleBody">
              
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
 <p>This guide documents the group’s use of the University of Oxford’s BMRC cluster.</p>
 <p>Researchers in other groups using the Kennedy’s Data Science Platform can also follow this guide if they wish to run e.g. the <a class="reference external" href="https://cellhub.readthedocs.io/">cellhub</a> or txseq pipelines.</p>
 <p>Please note that this guide is not a replacement for the <a class="reference external" href="https://www.medsci.ox.ac.uk/for-staff/resources/bmrc/r-and-rstudio-on-the-bmrc-cluster">official BMRC documentation</a>.</p>
 <section id="a-preliminary-note-on-cpu-architecture">
-<h2>A preliminary note on CPU architecture<a class="headerlink" href="#a-preliminary-note-on-cpu-architecture" title="Permalink to this heading"></a></h2>
+<h2>A preliminary note on CPU architecture<a class="headerlink" href="#a-preliminary-note-on-cpu-architecture" title="Link to this heading"></a></h2>
 <p>Currently, the BMRC cluster is mainly comprised of nodes with “skylake” CPU architecture, but there are also nodes with the older “ivybridge” architecture”. It is important to understand that code compiled on “skylake” will not execute on “ivybridge” CPUs due to additions to the instruction set. Code compiled on “ivybridge” will run on “skylake”.</p>
 <p>In the group, we perform our work on skylake login and execution nodes. The two main login nodes, “cluster1.bmrc.ox.ac.uk” and “cluster2.bmrc.ox.ac.uk” both have skylake CPUs. The excution nodes in groups A,E,F also have skylake CPUs.</p>
 <p>If, for some reason you need to work from ivybridge, rescomp3 is a hidden ivybridge headnode which can be accessed from the two main login nodes.</p>
 <p>For an overview of the nodes see: <a class="reference external" href="https://www.medsci.ox.ac.uk/divisional-services/support-services-1/bmrc/cluster-usage#cluster-queues-and-nodes">https://www.medsci.ox.ac.uk/divisional-services/support-services-1/bmrc/cluster-usage#cluster-queues-and-nodes</a></p>
 </section>
 <section id="who-is-who">
-<h2>Who is who?<a class="headerlink" href="#who-is-who" title="Permalink to this heading"></a></h2>
+<h2>Who is who?<a class="headerlink" href="#who-is-who" title="Link to this heading"></a></h2>
 <p>To map user names to real people, the following command can be used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">/</span><span class="n">well</span><span class="o">/</span><span class="n">sansom</span><span class="o">/</span><span class="n">users</span><span class="o">/</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">getent</span> <span class="n">passwd</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">f1</span><span class="p">,</span><span class="mi">5</span> <span class="o">-</span><span class="n">d</span><span class="p">:</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;s/:/ -&gt; /g&#39;</span>
 </pre></div>

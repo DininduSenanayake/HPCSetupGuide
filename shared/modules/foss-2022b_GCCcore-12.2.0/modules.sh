@@ -45,7 +45,7 @@ module load R/4.3.1-foss-2022b-bare
 module load Boost/1.81.0-GCC-12.2.0
 module load bzip2/1.0.8-GCCcore-12.2.0
 module load CMake/3.24.3-GCCcore-12.2.0
-# module load CPLEX/22.1.1-GCCcore-9.3.0-Python-3.8.2 – not yet available in the new stack
+module load CPLEX/22.1.1
 module load cURL/7.86.0-GCCcore-12.2.0
 module load Emacs/28.2-GCCcore-12.2.0
 module load GEOS/3.11.1-GCC-12.2.0

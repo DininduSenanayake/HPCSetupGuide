@@ -12,9 +12,8 @@ if [[ -n "$PS1" ]]; then
 
     # load the group's modules
     if hash module 2> /dev/null ; then
-	    source /well/sansom/shared/modules/core.sh
-	    source /well/sansom/shared/modules/single-cell.sh
-	    source /well/sansom/shared/modules/ngs.sh
+    
+	    source /well/sansom/shared/modules/v2/modules.sh
 	    
     fi
 	 

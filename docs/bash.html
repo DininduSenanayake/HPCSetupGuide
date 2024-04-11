@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Setting up your BASH environment &mdash; HPC Setup Guide 0.2 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=10f1778b"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> HPC Setup Guide
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            HPC Setup Guide
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -69,8 +75,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Setting up your BASH environment</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setting up your BASH environment</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/bash.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -81,9 +87,9 @@
            <div itemprop="articleBody">
              
   <section id="setting-up-your-bash-environment">
-<h1>Setting up your BASH environment<a class="headerlink" href="#setting-up-your-bash-environment" title="Permalink to this heading"></a></h1>
+<h1>Setting up your BASH environment<a class="headerlink" href="#setting-up-your-bash-environment" title="Link to this heading"></a></h1>
 <section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h2>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
 <p>A minimal “.bashrc” file profile is provided in dotfiles/bashrc:</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source global definitions</span>
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
@@ -99,9 +105,8 @@
 
 <span class="w">    </span><span class="c1"># load the group&#39;s modules</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">hash</span><span class="w"> </span>module<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/core.sh
-<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/single-cell.sh
-<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/ngs.sh
+<span class="w">    </span>
+<span class="w">	    </span><span class="nb">source</span><span class="w"> </span>/well/sansom/shared/modules/v2/modules.sh
 <span class="w">	    </span>
 <span class="w">    </span><span class="k">fi</span>
 <span class="w">	 </span>
@@ -135,17 +140,17 @@
 </div>
 </section>
 <section id="software-modules">
-<h2>Software modules<a class="headerlink" href="#software-modules" title="Permalink to this heading"></a></h2>
+<h2>Software modules<a class="headerlink" href="#software-modules" title="Link to this heading"></a></h2>
 <p>In order for different programs to be able to function together in the same bash environment, generally speaking, they need be compiled with a common toolchain and linked against common libraries.</p>
-<p>The Kennedy is currently using the <strong>“gompi/foss-2020a”</strong> and <strong>“GCC/GCCcore-9.3.0”</strong> toolchains which are compatible with each other (the GCC tool chain is effectively a subset of the full toolchain). All the software that you use (both in the shell and elsewere, e.g. Rstudio) should be built with these toolchains or it is very likely that you will encounter errors.</p>
+<p>The Kennedy is currently using the <strong>“gompi/foss-2022b”</strong> and <strong>“GCC/GCCcore-12.2.0”</strong> toolchains which are compatible with each other (the GCC tool chain is effectively a subset of the full toolchain). All the software that you use (both in the shell and elsewere, e.g. Rstudio) should be built with these toolchains or it is very likely that you will encounter errors.</p>
 <p>In the group, we load the modules we need via our “.bashrc” in interactive shells as shown above. This is done by sourcing scripts that load sets of related modules. The scripts defining our curated sets of modules are located on the cluster in our “~/shared/modules” folder and are version controlled in this repository. Please submit pull requests to this repo for any changes/updates needed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is important that the ~/shared/module/core.sh file is sourced first when loading module sets. It begins by purging the module space to make sure there will be no conflicts and enables use of Kennedy modules built with the current toolchain.</p>
+<p>It is important that the ~/shared/module/v2/module.sh file is sourced first when loading module sets. It begins by purging the module space to make sure there will be no conflicts and enables use of Kennedy modules built with the current toolchain.</p>
 </div>
 </section>
 <section id="using-tmux">
-<h2>Using tmux<a class="headerlink" href="#using-tmux" title="Permalink to this heading"></a></h2>
+<h2>Using tmux<a class="headerlink" href="#using-tmux" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> is an advanced terminal multiplexer. You can use it to keep bash shells open even when you are not logged in. This is very useful for protecting against interruptions to your connection to the cluster. It is recommended to always execute longer running tasks, such as pipelines, from within a tmux session.</p>
 <p>An configuration file for tmux that enables mouse support is in dotfiles/tmux:</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>mouse<span class="w"> </span>on
@@ -153,7 +158,7 @@
 </div>
 </section>
 <section id="staying-under-quota-in-your-home-directory">
-<h2>Staying under quota in your home directory<a class="headerlink" href="#staying-under-quota-in-your-home-directory" title="Permalink to this heading"></a></h2>
+<h2>Staying under quota in your home directory<a class="headerlink" href="#staying-under-quota-in-your-home-directory" title="Link to this heading"></a></h2>
 <p>By default your home directory has a quota of 10GB. To check the disk usage in your home directory do the following:</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span>
 du<span class="w"> </span>-hs
@@ -167,7 +172,7 @@ du<span class="w"> </span>-hs
 </div>
 </section>
 <section id="log-in-messages">
-<h2>Log in messages<a class="headerlink" href="#log-in-messages" title="Permalink to this heading"></a></h2>
+<h2>Log in messages<a class="headerlink" href="#log-in-messages" title="Link to this heading"></a></h2>
 <p>Please read the log in messages carefully. Once you have done so, if you do not wish to encounter them on every log in, touch a “.hushlogin” file in you home directory:</p>
 <div class="highlight-Bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>~/.hushlogin
 </pre></div>
