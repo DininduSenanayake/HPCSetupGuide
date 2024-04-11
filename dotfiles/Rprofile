@@ -1,6 +1,6 @@
 # Set the R package location
 # (make sure to edit to your own $USER name!)
-.libPaths(c("/well/sansom/users/odq545/devel/R/4.1/skylake/"))
+.libPaths(c("/well/sansom/users/odq545/devel/R/4.3/skylake/"))
 
 # Set a local mirror for packages
 options(repos=structure(c(CRAN="https://www.stats.bris.ac.uk/R/")))

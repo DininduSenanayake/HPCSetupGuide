@@ -87,8 +87,8 @@
 <h1>Working with R<a class="headerlink" href="#working-with-r" title="Link to this heading"></a></h1>
 <section id="r-module-and-version">
 <h2>R module and version<a class="headerlink" href="#r-module-and-version" title="Link to this heading"></a></h2>
-<p>We are currently using the <strong>R/4.1.2-foss-2020a-bare</strong> module as our default.</p>
-<p>This module provides R 1.4.2 built with the foss-2020a toolchain with only the base package set. This avoids conflict/confusion between centrally installed libraries and user-installed libraries.</p>
+<p>We are currently using the <strong>R/4.3.1-foss-2022b-bare</strong> module as our default.</p>
+<p>This module provides R 4.3.1 built with the foss-2022b toolchain with only the base package set. This avoids conflict/confusion between centrally installed libraries and user-installed libraries.</p>
 </section>
 <section id="r-configuration">
 <h2>R configuration<a class="headerlink" href="#r-configuration" title="Link to this heading"></a></h2>
@@ -96,7 +96,7 @@
 <blockquote>
 <div><div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="go"># Set the R package location</span>
 <span class="go"># (make sure to edit to your own $USER name!)</span>
-<span class="go">.libPaths(c(&quot;/well/sansom/users/odq545/devel/R/4.1/skylake/&quot;))</span>
+<span class="go">.libPaths(c(&quot;/well/sansom/users/odq545/devel/R/4.3/skylake/&quot;))</span>
 
 <span class="go"># Set a local mirror for packages</span>
 <span class="go">options(repos=structure(c(CRAN=&quot;https://www.stats.bris.ac.uk/R/&quot;)))</span>
@@ -113,6 +113,10 @@
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If necessary, create the directory specified in the Rprofile .libPaths() function before atttempting to install packages.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This setup assumes that you will use R only on the skylake nodes. It is different from the set up recommended by the BMRC which performs automatic CPU architecture detection and uses multiple package libraries for different architectures. In the group we prefer to be explicit about the location of the R libraries so that (i) we know which code we are using to perform analysis (important for reproducibility) and (ii) we only install packages once.</p>
