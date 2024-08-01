@@ -36,7 +36,7 @@ module purge
 
 ## Programming languages
 module load Python/3.10.8-GCCcore-12.2.0
-module load Java/11.0.2 # is this compatible ?
+module load Java/11.0.20 # is this compatible ?
 module load Perl/5.36.0-GCCcore-12.2.0
 module load nodejs/18.12.1-GCCcore-12.2.0 # dependency for R.
 module load R/4.3.1-foss-2022b-bare
