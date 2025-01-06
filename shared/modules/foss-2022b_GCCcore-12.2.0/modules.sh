@@ -12,7 +12,14 @@ else
     # so the above does not work.
     ARCH="skylake"
 fi
-   
+
+# make sure we start from a clean environment
+module purge
+
+# Add needed BMRC module directorys to the environment
+module use -a /apps/eb/2020b/${ARCH}/modules/all
+module use -a /apps/eb/2022b/${ARCH}/modules/all
+
 # Add the KIR module directory to the MODULEPATH environment variable
 module use -a /apps/kir/eb/${ARCH}/modules/all
 
@@ -20,8 +27,6 @@ module use -a /apps/kir/eb/${ARCH}/modules/all
 # Most of these are built with the same toolchain
 module use -a /apps/eb/dev/${ARCH}/modules/all
 
-# make sure we start from a clean environment
-module purge
 
 # 2. Load modules
 # ---------------
@@ -35,56 +40,66 @@ module purge
 # load a core set of modules
 
 ## Programming languages
-module load Python/3.10.8-GCCcore-12.2.0
-module load Java/11.0.20 # is this compatible ?
-module load Perl/5.36.0-GCCcore-12.2.0
-module load nodejs/18.12.1-GCCcore-12.2.0 # dependency for R.
-module load R/4.3.1-foss-2022b-bare
+mods="Python/3.10.8-GCCcore-12.2.0"
+mods=$mods" Java/11.0.20"
+mods=$mods" Perl/5.36.0-GCCcore-12.2.0"
+mods=$mods" nodejs/18.12.1-GCCcore-12.2.0" # dependency for R.
+# mods=$mods" R/4.3.1-foss-2022b-bare"
+mods=$mods" gfbf/2022b"
+mods=$mods" pybind11/2.10.3-GCCcore-12.2.0"
+mods=$mods" R/4.3.1-foss-2022b-bare-noSciPy"
 
 # general
-module load Boost/1.81.0-GCC-12.2.0
-module load bzip2/1.0.8-GCCcore-12.2.0
-module load CMake/3.24.3-GCCcore-12.2.0
-module load CPLEX/22.1.1
-module load cURL/7.86.0-GCCcore-12.2.0
-module load Emacs/28.2-GCCcore-12.2.0
-module load GEOS/3.11.1-GCC-12.2.0
-module load Ghostscript/10.0.0-GCCcore-12.2.0
-module load GMP/6.2.1-GCCcore-12.2.0
-module load GSL/2.7-GCC-12.2.0
-module load HDF5/1.14.0-gompi-2022b  
-module load libevent/2.1.12-GCCcore-12.2.0
-module load libxml2/2.10.3-GCCcore-12.2.0
-module load OpenSSL/1.1
-module load Pandoc/2.13 
-module load PCRE/8.45-GCCcore-12.2.0
-module load SQLite/3.39.4-GCCcore-12.2.0
-module load tmux/3.3a-GCCcore-12.2.0
-module load zlib/1.2.12-GCCcore-12.2.0
-module load git/2.38.1-GCCcore-12.2.0-nodocs
 
-# Unload unwanted modules
-module unload SciPy-bundle
+
+mods=$mods" Boost/1.81.0-GCC-12.2.0"
+mods=$mods" bzip2/1.0.8-GCCcore-12.2.0"
+mods=$mods" CMake/3.24.3-GCCcore-12.2.0"
+mods=$mods" CPLEX/22.1.1"
+mods=$mods" cURL/7.86.0-GCCcore-12.2.0"
+mods=$mods" Emacs/28.2-GCCcore-12.2.0"
+mods=$mods" GEOS/3.11.1-GCC-12.2.0"
+mods=$mods" Ghostscript/10.0.0-GCCcore-12.2.0"
+mods=$mods" GMP/6.2.1-GCCcore-12.2.0"
+mods=$mods" GSL/2.7-GCC-12.2.0"
+mods=$mods" HDF5/1.14.0-gompi-2022b"
+mods=$mods" libevent/2.1.12-GCCcore-12.2.0"
+mods=$mods" libxml2/2.10.3-GCCcore-12.2.0"
+mods=$mods" OpenSSL/1.1"
+mods=$mods" Pandoc/2.13"
+mods=$mods" PCRE/8.45-GCCcore-12.2.0"
+mods=$mods" SQLite/3.39.4-GCCcore-12.2.0"
+mods=$mods" tmux/3.3a-GCCcore-12.2.0"
+mods=$mods" zlib/1.2.12-GCCcore-12.2.0"
+mods=$mods" git/2.38.1-GCCcore-12.2.0-nodocs"
 
 # load modules for analysis of next-generation sequencing data.
-module load BEDTools/2.30.0-GCC-12.2.0
-module load FastQC/0.11.9-Java-11
-module load HISAT2/2.2.1-gompi-2022b
-module load Kent_tools/450-GCC-12.2.0
-module load SAMtools/1.17-GCC-12.2.0
-module load Salmon/1.10.0-GCC-12.2.0
-module load Subread/2.0.4-GCC-12.2.0
-module load cutadapt/4.4-GCCcore-12.2.0
-module load kallisto/0.48.0-gompi-2022b
-module load picard/2.25.1-Java-11 &> /dev/null
- 
+mods=$mods" BEDTools/2.30.0-GCC-12.2.0"
+mods=$mods" FastQC/0.11.9-Java-11"
+mods=$mods" HISAT2/2.2.1-gompi-2022b"
+mods=$mods" Kent_tools/450-GCC-12.2.0"
+mods=$mods" SAMtools/1.17-GCC-12.2.0"
+mods=$mods" Salmon/1.10.0-GCC-12.2.0"
+mods=$mods" Subread/2.0.4-GCC-12.2.0"
+mods=$mods" cutadapt/4.4-GCCcore-12.2.0"
+mods=$mods" kallisto/0.48.0-gompi-2022b"
+mods=$mods" picard/2.25.1-Java-11"
+
 # load modules for single-cell data analysis.
-module load CellRanger/7.1.0 
+mods=$mods" CellRanger/7.1.0"
+
+module load $mods &> /dev/null
+
+ 
+## Unload unwanted modules
+## This is no longer necessary because we now have a clean
+## build of R.
+# module unload SciPy-bundle
 
 ## Optional modules 
 
 # texlive - if needed can be loaded with.
-# module load texlive/20230313-GCC-12.2.0
+# mods=$mods" texlive/20230313-GCC-12.2.0"
  
 
 

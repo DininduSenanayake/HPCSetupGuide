@@ -5,7 +5,7 @@ Host *
 
 Host bmrc1
      hostname cluster1.bmrc.ox.ac.uk
-     user odq545
+     user xxxxxx
      ForwardAgent yes
      ForwardX11Trusted yes
      ControlMaster auto
@@ -14,7 +14,16 @@ Host bmrc1
 
 Host bmrc2
      hostname cluster2.bmrc.ox.ac.uk
-     user odq545
+     user xxxxxx
+     ForwardAgent yes
+     ForwardX11Trusted yes
+     ControlMaster auto
+     ControlPath ~/.ssh/sockets/ssh-socket-%r-%h-%p
+     ControlPersist 24h
+
+Host bmrc4
+     hostname cluster4.bmrc.ox.ac.uk
+     user xxxxxx
      ForwardAgent yes
      ForwardX11Trusted yes
      ControlMaster auto

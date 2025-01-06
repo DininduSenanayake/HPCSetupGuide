@@ -19,6 +19,8 @@ An example of a client-side .ssh/config is provided in client-side/ssh/config:
     .. literalinclude:: ../../client-side/ssh/config
         :language: Bash
 
+.. note:: Replace "xxxxxx" with your BMRC user name.
+
 .. note:: You will need to create the ".ssh/sockets" directory if it does not exist:
 
 .. code-block:: Bash

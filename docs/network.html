@@ -105,7 +105,7 @@
 
 Host<span class="w"> </span>bmrc1
 <span class="w">     </span>hostname<span class="w"> </span>cluster1.bmrc.ox.ac.uk
-<span class="w">     </span>user<span class="w"> </span>odq545
+<span class="w">     </span>user<span class="w"> </span>xxxxxx
 <span class="w">     </span>ForwardAgent<span class="w"> </span>yes
 <span class="w">     </span>ForwardX11Trusted<span class="w"> </span>yes
 <span class="w">     </span>ControlMaster<span class="w"> </span>auto
@@ -114,7 +114,16 @@ Host<span class="w"> </span>bmrc1
 
 Host<span class="w"> </span>bmrc2
 <span class="w">     </span>hostname<span class="w"> </span>cluster2.bmrc.ox.ac.uk
-<span class="w">     </span>user<span class="w"> </span>odq545
+<span class="w">     </span>user<span class="w"> </span>xxxxxx
+<span class="w">     </span>ForwardAgent<span class="w"> </span>yes
+<span class="w">     </span>ForwardX11Trusted<span class="w"> </span>yes
+<span class="w">     </span>ControlMaster<span class="w"> </span>auto
+<span class="w">     </span>ControlPath<span class="w"> </span>~/.ssh/sockets/ssh-socket-%r-%h-%p
+<span class="w">     </span>ControlPersist<span class="w"> </span>24h
+
+Host<span class="w"> </span>bmrc4
+<span class="w">     </span>hostname<span class="w"> </span>cluster4.bmrc.ox.ac.uk
+<span class="w">     </span>user<span class="w"> </span>xxxxxx
 <span class="w">     </span>ForwardAgent<span class="w"> </span>yes
 <span class="w">     </span>ForwardX11Trusted<span class="w"> </span>yes
 <span class="w">     </span>ControlMaster<span class="w"> </span>auto
@@ -123,6 +132,10 @@ Host<span class="w"> </span>bmrc2
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace “xxxxxx” with your BMRC user name.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You will need to create the “.ssh/sockets” directory if it does not exist:</p>
