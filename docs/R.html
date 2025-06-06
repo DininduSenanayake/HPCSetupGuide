@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -5,19 +7,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Working with R &mdash; HPC Setup Guide 0.2 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=10f1778b"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=10f1778b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -87,7 +85,7 @@
 <h1>Working with R<a class="headerlink" href="#working-with-r" title="Link to this heading"></a></h1>
 <section id="r-module-and-version">
 <h2>R module and version<a class="headerlink" href="#r-module-and-version" title="Link to this heading"></a></h2>
-<p>We are currently using the <strong>R/4.3.1-foss-2022b-bare</strong> module as our default.</p>
+<p>We are currently using the <strong>R/4.3.1-foss-2022b-bare-noSciPy</strong> module as our default.</p>
 <p>This module provides R 4.3.1 built with the foss-2022b toolchain with only the base package set. This avoids conflict/confusion between centrally installed libraries and user-installed libraries.</p>
 </section>
 <section id="r-configuration">
@@ -96,7 +94,7 @@
 <blockquote>
 <div><div class="highlight-rconsole notranslate"><div class="highlight"><pre><span></span><span class="go"># Set the R package location</span>
 <span class="go"># (make sure to edit to your own $USER name!)</span>
-<span class="go">.libPaths(c(&quot;/well/sansom/users/odq545/devel/R/4.3/skylake/&quot;))</span>
+<span class="go">.libPaths(c(&quot;/well/sansom/users/$USER/devel/R/4.3/skylake/&quot;))</span>
 
 <span class="go"># Set a local mirror for packages</span>
 <span class="go">options(repos=structure(c(CRAN=&quot;https://www.stats.bris.ac.uk/R/&quot;)))</span>
@@ -104,10 +102,10 @@
 <span class="go"># Set cairo as the default bitmap type</span>
 <span class="go">options(bitmapType=&#39;cairo&#39;)</span>
 
-<span class="go"># Enable vscode hooks</span>
-<span class="go">if (interactive() &amp;&amp; Sys.getenv(&quot;RSTUDIO&quot;) == &quot;&quot;) {</span>
-<span class="go">source(file.path(Sys.getenv(if (.Platform$OS.type == &quot;windows&quot;) &quot;USERPROFILE&quot; else &quot;HOME&quot;), &quot;.vscode-R&quot;, &quot;init.R&quot;))</span>
-<span class="go">}</span>
+<span class="go"># Optional - Enable vscode hooks</span>
+<span class="go"># if (interactive() &amp;&amp; Sys.getenv(&quot;RSTUDIO&quot;) == &quot;&quot;) {</span>
+<span class="go"># source(file.path(Sys.getenv(if (.Platform$OS.type == &quot;windows&quot;) &quot;USERPROFILE&quot; else &quot;HOME&quot;), &quot;.vscode-R&quot;, &quot;init.R&quot;))</span>
+<span class="go"># }</span>
 
 <span class="go"># End line to ensure that the last command as a new line (else it is not executed!)</span>
 </pre></div>

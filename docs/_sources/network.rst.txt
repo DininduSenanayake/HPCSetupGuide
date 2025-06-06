@@ -4,7 +4,7 @@ Connecting to the Cluster
 Connecting from within the Kennedy
 ----------------------------------
 
-The BRMC login nodes ("cluster1.bmrc.ox.ac.uk" and "cluster2.bmrc.ox.ac.uk") are directly accessible from the Kennedy network.
+The BRMC login nodes ("cluster1.bmrc.ox.ac.uk", "cluster2.bmrc.ox.ac.uk", "cluster3.bmrc.ox.ac.uk" and "cluster4.bmrc.ox.ac.uk") are directly accessible from the Kennedy network.
 
 Connecting from outside the Kennedy
 -----------------------------------

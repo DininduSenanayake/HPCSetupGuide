@@ -14,7 +14,7 @@ A preliminary note on CPU architecture
 
 Currently, the BMRC cluster is mainly comprised of nodes with "skylake" CPU architecture, but there are also nodes with the older "ivybridge" architecture". It is important to understand that code compiled on "skylake" will not execute on "ivybridge" CPUs due to additions to the instruction set. Code compiled on "ivybridge" will run on "skylake".
 
-In the group, we perform our work on skylake login and execution nodes. The two main login nodes, "cluster1.bmrc.ox.ac.uk" and "cluster2.bmrc.ox.ac.uk" both have skylake CPUs. The excution nodes in groups A,E,F also have skylake CPUs. 
+In the group, we perform our work on skylake login and execution nodes. The  main login nodes, "cluster1-4.bmrc.ox.ac.uk" have skylake CPUs. The excution nodes in groups A,E,F also have skylake CPUs. 
 
 If, for some reason you need to work from ivybridge, rescomp3 is a hidden ivybridge headnode which can be accessed from the two main login nodes.
 
