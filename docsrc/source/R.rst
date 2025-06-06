@@ -4,7 +4,7 @@ Working with R
 R module and version
 --------------------
 
-We are currently using the **R/4.3.1-foss-2022b-bare** module as our default.
+We are currently using the **R/4.3.1-foss-2022b-bare-noSciPy** module as our default.
 
 This module provides R 4.3.1 built with the foss-2022b toolchain with only the base package set. This avoids conflict/confusion between centrally installed libraries and user-installed libraries.
 
