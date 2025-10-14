@@ -1,4 +1,4 @@
-# Sansom lab core modules V2 [ gompi/foss-2022b + GCC/GCCcore-12.2.0 toolchain ]
+# Sansom lab core modules V3 [ gompi/foss-2023a + GCC/GCCcore-12.3.0 toolchain ]
 #
 # 1. Add modulesets to the MODULEPATH
 # -----------------------------------
