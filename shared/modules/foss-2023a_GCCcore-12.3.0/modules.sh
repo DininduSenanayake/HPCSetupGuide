@@ -40,7 +40,7 @@ module use -a /apps/eb/dev/${ARCH}/modules/all
 # load a core set of modules
 
 ## Programming languages
-mods="Python/3.11.3-GCCcore-12.3.0"
+mods="Python/3.10.8-GCCcore-12.3.0"
 mods=$mods" Java/11.0.20"
 mods=$mods" Perl/5.36.1-GCCcore-12.3.0"
 mods=$mods" nodejs/18.17.1-GCCcore-12.3.0" # dependency for R.
